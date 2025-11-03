@@ -4,7 +4,8 @@ import nodemailer from 'nodemailer';
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { nom, prenom, email, telephone, formations, codePromo, total, discount } = body;
+    // On récupère discountRate (correctif du bug de réduction)
+    const { nom, prenom, email, telephone, formations, codePromo, total, discount, discountRate } = body;
 
     // Create transporter using Gmail
     const transporter = nodemailer.createTransport({
@@ -13,6 +14,11 @@ export async function POST(request) {
         user: process.env.GMAIL_USER, // Your Gmail address
         pass: process.env.GMAIL_APP_PASSWORD, // Gmail App Password
       },
+      // 👇 SOLUTION APPLIQUÉE (Pour l'erreur 'self-signed certificate')
+      // Ceci est pour le développement local UNIQUEMENT.
+      tls: {
+        rejectUnauthorized: false
+      }
     });
 
     // Email to admin
@@ -86,7 +92,7 @@ export async function POST(request) {
                   ${discount ? `
                     <div class="info-row">
                       <span class="label">Réduction:</span>
-                      <span class="value" style="color: #10b981; font-weight: bold;">25%</span>
+                      <span class="value" style="color: #10b981; font-weight: bold;">${discountRate * 100}%</span>
                     </div>
                   ` : ''}
                 </div>
@@ -95,7 +101,7 @@ export async function POST(request) {
               <div class="total">
                 <h3 style="margin-top: 0; color: #6b7280;">Montant Total</h3>
                 <div class="total-amount">${total.toLocaleString()} DZD</div>
-                ${discount ? '<span class="discount-badge">✓ Réduction de 25% appliquée</span>' : ''}
+                ${discount ? `<span class="discount-badge">✓ Réduction de ${discountRate * 100}% appliquée</span>` : ''}
               </div>
             </div>
           </div>
@@ -153,7 +159,7 @@ export async function POST(request) {
               <div class="total">
                 <h3 style="margin-top: 0; color: #6b7280;">Montant Total à Payer</h3>
                 <div class="total-amount">${total.toLocaleString()} DZD</div>
-                ${discount ? '<p style="color: #10b981; font-weight: bold; margin-top: 10px;">✓ Réduction de 25% appliquée avec le code ' + codePromo + '</p>' : ''}
+                ${discount ? `<p style="color: #10b981; font-weight: bold; margin-top: 10px;">✓ Réduction de ${discountRate * 100}% appliquée avec le code ${codePromo}</p>` : ''}
               </div>
 
               <div class="section">

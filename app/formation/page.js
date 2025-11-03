@@ -122,7 +122,8 @@ export default function FormationSection() {
           formations: selectedFormations,
           codePromo: formData.codePromo || null,
           total: calculateTotal(),
-          discount: promoDetails.applied
+          discount: promoDetails.applied,
+          discountRate: promoDetails.rate // 👈 ADD THIS LINE
         })
       });
 
