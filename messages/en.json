@@ -1,0 +1,523 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "getQuote": "Get a Quote",
+    "training": "Training"
+  },
+  "HeroSection": {
+    "title": "Your Technology Partner from A to Z",
+    "subtitle": "Web & mobile development, digital marketing, and professional training in Algeria",
+    "trainingButton": "Our Training Programs",
+    "quoteButton": "Get a Quote"
+  },
+  "ServicesSection": {
+    "title": "Our Services",
+    "subtitle": "Complete solutions for all your digital needs",
+    "cat1": "Digital Development",
+    "s1_title": "Custom Websites",
+    "s1_desc": "Showcase sites, e-commerce, and custom web applications with the latest technologies",
+    "s2_title": "Mobile Applications",
+    "s2_desc": "Native or cross-platform iOS and Android apps to reach your mobile audience",
+    "s3_title": "Maintenance & Support",
+    "s3_desc": "Ongoing technical support and maintenance to ensure your platforms perform optimally",
+    "cat2": "Marketing & Design",
+    "s4_title": "Digital Strategy",
+    "s4_desc": "SEO, online advertising, and growth strategies to maximize your visibility",
+    "s5_title": "Social Media Management",
+    "s5_desc": "Content creation, community management, and engaging social media campaigns",
+    "s6_title": "Design & Branding",
+    "s6_desc": "Visual identity, UI/UX design, and graphic creation to make a lasting impression",
+    "cat3": "Training & Support",
+    "s7_title": "Professional Training",
+    "s7_desc": "Training programs in web development, office software, and digital skills",
+    "s8_title": "Digital Consulting",
+    "s8_desc": "Strategic advice to transform your business and embrace digital",
+    "s9_title": "Video Production",
+    "s9_desc": "Professional video content creation for your marketing campaigns and communications"
+  },
+  "BundleSection": {
+    "tag": "Special Offer",
+    "title": "All-in-One Packages",
+    "subtitle": "Save up to 30% with our bundled offers combining development, design, and marketing",
+    "stat1_title": "3 Plans",
+    "stat1_desc": "From starter to enterprise",
+    "stat2_title": "-30%",
+    "stat2_desc": "On complete packages",
+    "stat3_title": "24/7 Support",
+    "stat3_desc": "Priority assistance included",
+    "button": "Discover Packages"
+  },
+  "AboutSection": {
+    "title": "Our Projects",
+    "subtitle": "Discover some of the projects we've developed with passion and expertise for our clients.",
+    "projectsTitle": "Featured Projects",
+    "project1_name": "Academy Wahrani",
+    "project1_desc": "Complete educational platform with course, student, and certification management",
+    "project2_name": "PolyNote",
+    "project2_desc": "Collaborative note-taking application for students and professionals",
+    "project3_name": "Attendance Tracker",
+    "project3_desc": "Intelligent attendance tracking system for educational institutions",
+    "project4_name": "LingoLab Forum",
+    "project4_desc": "Community language learning platform with forums and resources",
+    "project5_name": "Colloquium Relizane",
+    "project5_desc": "Event website for university conferences with registration management",
+    "visitSite": "Visit Site",
+    "comingSoon": "Coming Soon"
+  },
+  "TestimonialsSection": {
+    "title": "What Our Clients Say",
+    "t1_name": "Ahmed Benali",
+    "t1_company": "E-Shop DZ",
+    "t1_text": "DevLab transformed our online presence. Our e-commerce site is fast, modern, and sales have increased by 150%!",
+    "t2_name": "Fatima Zahra",
+    "t2_company": "Formation Plus",
+    "t2_text": "Excellent web development training. The team is professional and post-training support is impeccable.",
+    "t3_name": "Karim Mansouri",
+    "t3_company": "StartUp Algeria",
+    "t3_text": "A trusted partner for our digital transformation. Their expertise and responsiveness make all the difference."
+  },
+  "ContactSection": {
+    "title": "Ready to Start Your Project?",
+    "subtitle": "Contact us today to discuss your needs and get a personalized quote",
+    "email": "Send Email",
+    "whatsapp": "WhatsApp"
+  },
+  "Footer": {
+    "description": "Your trusted technology partner in Algeria for web, mobile development, and digital transformation.",
+    "navTitle": "Quick Links",
+    "navHome": "Home",
+    "navServices": "Services",
+    "navAbout": "About",
+    "startTitle": "Get Started",
+    "startContact": "Contact Us",
+    "startTraining": "Training",
+    "startBundles": "Packages",
+    "copyright": "© {year} DevLab. All rights reserved."
+  },
+  "BundlePage": {
+    "backToHome": "Back to home",
+    "promoBanner": "Limited Offer",
+    "title": "All-in-One Packages for Your Digital Success",
+    "subtitle": "Save up to 30% with our offers combining development, design, and marketing",
+    "pageTitle": "Choose Your Package",
+    "pageSubtitle": "Complete solutions adapted to your budget",
+    "popular": "Most Popular",
+    "currency": "DZD",
+    "customPrice": "Custom",
+    "save": "Save",
+    "chooseButton": "Choose This Package",
+    "quoteButton": "Request Quote",
+    "starter": {
+      "name": "Starter",
+      "price": "150000",
+      "description": "Perfect to start your online presence",
+      "features": [
+        "5-page showcase site",
+        "Modern responsive design",
+        "Basic SEO optimization",
+        "Contact form",
+        "1-year hosting included",
+        "3-month email support",
+        "2h usage training",
+        "Premium social media",
+        "Advanced analytics"
+      ]
+    },
+    "premium": {
+      "name": "Premium",
+      "price": "350000",
+      "description": "Complete solution for your growth",
+      "savings": "30%",
+      "features": [
+        "Custom website 10+ pages",
+        "Professional UI/UX design",
+        "Advanced SEO + content strategy",
+        "E-commerce integration",
+        "Basic mobile app",
+        "6-month priority support",
+        "Complete 8h training",
+        "3-month social media management",
+        "Analytics + monthly reporting"
+      ]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "description": "Custom solutions for large companies",
+      "features": [
+        "Unlimited complex web platform",
+        "iOS + Android mobile apps",
+        "Scalable cloud architecture",
+        "Custom API integrations",
+        "Complete design system",
+        "24/7 dedicated support",
+        "Complete team training",
+        "Full marketing strategy",
+        "Digital transformation consulting"
+      ]
+    },
+    "includedTitle": "What's Included",
+    "includedSubtitle": "Everything you need to succeed",
+    "catDev": "Development",
+    "catDevItems": [
+      "Clean, maintainable code",
+      "Testing and quality",
+      "Complete documentation",
+      "Secure deployment"
+    ],
+    "catDesign": "Design",
+    "catDesignItems": [
+      "Professional mockups",
+      "Interactive prototypes",
+      "Style guide",
+      "Graphic assets"
+    ],
+    "catMarketing": "Marketing",
+    "catMarketingItems": [
+      "SEO strategy",
+      "Optimized content",
+      "Ad campaigns",
+      "Detailed analytics"
+    ],
+    "catTraining": "Training",
+    "catTrainingItems": [
+      "Personalized sessions",
+      "Video documentation",
+      "Post-training support",
+      "Certificates"
+    ],
+    "bonusTitle": "Fast Delivery",
+    "bonusDesc": "Start within 48h",
+    "bonus2Title": "Satisfaction Guarantee",
+    "bonus2Desc": "30-day refund",
+    "bonus3Title": "Updates",
+    "bonus3Desc": "6 months free",
+    "bonus4Title": "Premium Support",
+    "bonus4Desc": "Priority assistance",
+    "faqTitle": "Frequently Asked Questions",
+    "faqs": [
+      {
+        "q": "Can I change packages later?",
+        "a": "Yes, you can upgrade your package at any time. We'll calculate the pro-rated difference."
+      },
+      {
+        "q": "What are the delivery times?",
+        "a": "Starter: 2-3 weeks, Premium: 4-6 weeks, Enterprise: depends on project (typically 8-12 weeks)."
+      },
+      {
+        "q": "Is technical support included?",
+        "a": "Yes, all packages include support. Duration and level vary by plan."
+      },
+      {
+        "q": "Can I customize my package?",
+        "a": "Absolutely! Contact us to create a custom package tailored to your specific needs."
+      }
+    ],
+    "ctaTitle": "Ready to Get Started?",
+    "ctaSubtitle": "Let's discuss your project and find the perfect solution together",
+    "ctaButton1": "Contact Us",
+    "ctaButton2": "View All Services"
+  },
+  "DevisPage": {
+    "backToHome": "Back to home",
+    "mainTitle": "Quote Calculator",
+    "subtitle": "Get an instant estimate for your project",
+    "steps": {
+      "1": "Services",
+      "2": "Details",
+      "3": "Contact",
+      "4": "Summary"
+    },
+    "step1Title": "Select Your Services",
+    "step2Title": "Project Details",
+    "step3Title": "Your Contact Information",
+    "step4Title": "Request Sent Successfully!",
+    "step4Subtitle": "We received your request and will contact you within 24-48 hours",
+    "continue": "Continue",
+    "back": "Back",
+    "submitButton": "Send Request",
+    "budgetLabel": "Estimated Budget",
+    "timelineLabel": "Desired Timeline",
+    "messageLabel": "Additional Message",
+    "messagePlaceholder": "Describe your project briefly...",
+    "nameLabel": "Full Name *",
+    "namePlaceholder": "John Doe",
+    "companyLabel": "Company",
+    "companyPlaceholder": "Your Company LLC",
+    "emailLabel": "Email *",
+    "emailPlaceholder": "john@example.com",
+    "phoneLabel": "Phone *",
+    "phonePlaceholder": "+213 XXX XXX XXX",
+    "summaryTitle": "Summary of Your Request",
+    "summaryServices": "Selected Services",
+    "summaryTotal": "Estimated Total",
+    "summaryDisclaimer": "This is an estimate. Final price will be confirmed after detailed analysis.",
+    "summaryBudget": "Budget",
+    "summaryTimeline": "Timeline",
+    "newRequestButton": "New Request",
+    "floatingSummary": "{count} service(s) selected",
+    "floatingTotal": "Total: {total} DZD",
+    "floatingContinue": "Continue",
+    "floatingFinalize": "Finalize",
+    "floatingSubmit": "Submit",
+    "errorRequired": "Please fill in all required fields",
+    "errorApi": "Error sending. Please try again.",
+    "errorNetwork": "Connection error. Check your internet.",
+    "budgets": {
+      "range1": "50,000 - 100,000 DZD",
+      "range2": "100,000 - 250,000 DZD",
+      "range3": "250,000 - 500,000 DZD",
+      "range4": "500,000+ DZD",
+      "notSpecified": "Not specified"
+    },
+    "timelines": {
+      "range1": "1-2 weeks",
+      "range2": "1 month",
+      "range3": "2-3 months",
+      "range4": "Flexible",
+      "notSpecified": "Not specified"
+    },
+    "services": {
+      "web": {
+        "category": "Web Development",
+        "vitrine": {
+          "name": "Showcase Website",
+          "description": "Professional 5-10 page website",
+          "features": [
+            "Responsive design",
+            "SEO optimization",
+            "Contact forms",
+            "1-year hosting"
+          ]
+        },
+        "ecommerce": {
+          "name": "E-commerce",
+          "description": "Complete online store",
+          "features": [
+            "Product catalog",
+            "Cart & payment",
+            "Order management",
+            "Admin dashboard"
+          ]
+        },
+        "custom": {
+          "name": "Custom Web Application",
+          "description": "Complex custom solution",
+          "features": [
+            "Scalable architecture",
+            "Advanced features",
+            "API integrations",
+            "Analytics dashboard"
+          ]
+        }
+      },
+      "mobile": {
+        "category": "Mobile Applications",
+        "iosAndroid": {
+          "name": "iOS & Android App",
+          "description": "High-performance native app",
+          "features": [
+            "Native iOS/Android design",
+            "Offline mode",
+            "Push notifications",
+            "Store publication"
+          ]
+        },
+        "crossPlatform": {
+          "name": "Cross-Platform App",
+          "description": "React Native/Flutter application",
+          "features": [
+            "Shared iOS/Android code",
+            "Optimal performance",
+            "Simplified maintenance",
+            "Fast deployment"
+          ]
+        }
+      },
+      "design": {
+        "category": "Design & Branding",
+        "branding": {
+          "name": "Visual Identity",
+          "description": "Logo, complete brand guidelines",
+          "features": [
+            "Professional logo",
+            "Brand guidelines",
+            "Variations",
+            "Usage guide"
+          ]
+        },
+        "uiux": {
+          "name": "UI/UX Design",
+          "description": "User interface design",
+          "features": [
+            "Figma mockups",
+            "Interactive prototypes",
+            "Design system",
+            "User testing"
+          ]
+        }
+      },
+      "marketing": {
+        "category": "Digital Marketing",
+        "seo": {
+          "name": "SEO",
+          "description": "Search engine optimization",
+          "features": [
+            "Complete SEO audit",
+            "On-page optimization",
+            "Content strategy",
+            "Ranking tracking"
+          ]
+        },
+        "social": {
+          "name": "Social Media Management",
+          "description": "Monthly community management",
+          "features": [
+            "Content creation",
+            "Daily publishing",
+            "Community engagement",
+            "Monthly reporting"
+          ]
+        },
+        "ads": {
+          "name": "Online Advertising",
+          "description": "Google Ads / Facebook campaigns",
+          "features": [
+            "Ad strategy",
+            "Ad creation",
+            "Campaign management",
+            "ROI optimization"
+          ]
+        }
+      },
+      "scaling": {
+        "category": "Growth & Support",
+        "maintenance": {
+          "name": "Maintenance & Support",
+          "description": "Monthly technical support",
+          "features": [
+            "Security updates",
+            "Bug fixes",
+            "Technical support",
+            "Regular backups"
+          ]
+        },
+        "performance": {
+          "name": "Performance Optimization",
+          "description": "Speed audit and improvement",
+          "features": [
+            "Performance audit",
+            "Code optimization",
+            "CDN & caching",
+            "Continuous monitoring"
+          ]
+        }
+      }
+    }
+  },
+  "FormationPage": {
+    "backToHome": "Back to home",
+    "title": "Professional Training",
+    "subtitle": "Develop your skills with our certified training in web development and office software",
+    "formation1_title": "Web Development Training",
+    "formation1_price": 50000,
+    "formation1_duration": "3 months (40 hours)",
+    "formation1_desc": "Learn to create modern websites with HTML, CSS, JavaScript, and React",
+    "formation1_skills": [
+      "Advanced HTML5 & CSS3",
+      "JavaScript ES6+",
+      "React & Next.js",
+      "Git & deployment",
+      "Final portfolio project"
+    ],
+    "formation2_title": "Complete Office Training",
+    "formation2_price": 35000,
+    "formation2_duration": "2 months (30 hours)",
+    "formation2_desc": "Master Microsoft Office tools to boost your productivity",
+    "formation2_skills": [
+      "Advanced Word",
+      "Excel with formulas",
+      "Professional PowerPoint",
+      "Outlook & planning",
+      "Certification included"
+    ],
+    "skillsTitle": "Skills acquired:",
+    "formTitle": "Training Registration",
+    "formNom": "Last Name",
+    "formPrenom": "First Name",
+    "formEmail": "Email",
+    "formTelephone": "Phone",
+    "formFormations": "Selected Training",
+    "formNoFormation": "No training selected",
+    "formPromo": "Promo Code (optional)",
+    "formPromoPlaceholder": "DEV or DEVLAB",
+    "formPromoHint": "DEV: -10% on 1 training | DEVLAB: -25% on 2 trainings",
+    "formApply": "Apply",
+    "submitButton": "Submit Registration",
+    "submitting": "Sending...",
+    "total": "Total to Pay",
+    "discountApplied": "{rate}% discount applied!",
+    "errorSelectOne": "Please select at least one training",
+    "errorPromoInvalid": "Invalid promo code",
+    "errorPromoNone": "Please select a training first",
+    "errorPromoDev": "DEV: -10% for 1 training only",
+    "errorPromoDevlab": "DEVLAB: -25% for 2 trainings",
+    "statusSuccess": "Registration sent successfully! We'll contact you within 24-48h.",
+    "statusError": "Error sending. Please try again."
+  },
+  "QuoteEmail": {
+    "client": {
+      "subject": "Quote request confirmation - DevLab",
+      "header": "Thank you for your request!",
+      "greeting": "Hello",
+      "thankYou": "We have received your quote request and thank you for your interest in our services.",
+      "contactYou": "Our team will analyze your request and contact you within 24-48 hours to discuss your project in detail.",
+      "summaryTitle": "Summary of your request",
+      "servicesTitle": "Requested services:",
+      "totalEstimate": "Total Estimate",
+      "totalDisclaimer": "This estimate is indicative and will be refined after our discussion",
+      "projectInfoTitle": "Project information:",
+      "company": "Company",
+      "budget": "Budget",
+      "timeline": "Timeline",
+      "message": "Message",
+      "notSpecified": "Not specified",
+      "nextStepsTitle": "Next steps:",
+      "step1": "Our team reviews your request",
+      "step2": "We contact you for a detailed interview",
+      "step3": "We send you a personalized quote",
+      "step4": "Project launch after your validation",
+      "visitSite": "Visit Our Website",
+      "footerTitle": "Need help?",
+      "footerNote": "You are receiving this email because you requested a quote on devlab.dz",
+      "successMessage": "Your request has been sent successfully!"
+    },
+    "admin": {
+      "subject": "New quote request from {name}",
+      "header": "New Quote Request",
+      "subtitle": "A new request has been received",
+      "actionRequired": "⚠️ Action required: Contact client within 24h",
+      "clientInfoTitle": "Client Information",
+      "name": "Name",
+      "company": "Company",
+      "email": "Email",
+      "phone": "Phone",
+      "servicesTitle": "Requested Services",
+      "total": "Estimated Total: {totalPrice} DZD",
+      "projectDetailsTitle": "Project Details",
+      "budget": "Budget",
+      "timeline": "Timeline",
+      "message": "Message",
+      "notSpecified": "Not specified",
+      "actionsTitle": "Actions to Take",
+      "action1": "Call/email client within 24h",
+      "action2": "Analyze needs in detail",
+      "action3": "Prepare personalized quote",
+      "action4": "Schedule meeting if necessary",
+      "action5": "Follow up in CRM",
+      "receivedOn": "Request received on: {date}"
+    },
+    "apiError": "Error sending request"
+  }
+}

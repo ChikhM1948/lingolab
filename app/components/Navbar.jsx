@@ -4,13 +4,12 @@
 import { Moon, Sun, Menu, X, GraduationCap } from 'lucide-react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Link } from 'next-intl/navigation'; // <-- CORRECTED IMPORT
-import LocaleSwitcher from './LocaleSwitcher'; // <-- IMPORTED
+import { Link } from '@/navigation'; // Import from your navigation.js file
+import LocaleSwitcher from './LocaleSwitcher';
 
 export default function Navbar({ darkMode, toggleDarkMode, mobileMenuOpen, setMobileMenuOpen, scrollToSection }) {
   const t = useTranslations('Navbar');
 
-  // Helper function to close mobile menu on link click
   const handleMobileLinkClick = (id) => {
     scrollToSection(id);
     setMobileMenuOpen(false);
@@ -72,7 +71,7 @@ export default function Navbar({ darkMode, toggleDarkMode, mobileMenuOpen, setMo
               <span className="font-semibold">{t('training')}</span>
             </Link>
 
-            <LocaleSwitcher /> {/* <-- ADDED */}
+            <LocaleSwitcher />
 
             <button
               onClick={toggleDarkMode}
@@ -85,7 +84,7 @@ export default function Navbar({ darkMode, toggleDarkMode, mobileMenuOpen, setMo
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center space-x-2">
-            <LocaleSwitcher /> {/* <-- ADDED */}
+            <LocaleSwitcher />
             <button
               onClick={toggleDarkMode}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 border border-gray-200 dark:border-gray-700"

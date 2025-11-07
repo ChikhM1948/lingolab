@@ -1,21 +1,22 @@
 // app/[locale]/devis/page.js
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { 
   Calculator, Check, ArrowRight, ArrowLeft, 
   Smartphone, Globe, Palette, TrendingUp, 
   Megaphone, Shield, Zap, Users, Mail, Phone,
   CheckCircle2, Package, Sparkles, Moon, Sun
 } from 'lucide-react';
-import { Link, usePathname, useRouter } from 'next-intl/client'; // Use next-intl Link
-import { useTranslations, useLocale } from 'next-intl'; // Import i18n hooks
+import { Link, usePathname, useRouter } from 'next-intl/navigation'; // <-- CORRECTED IMPORT
+import { useTranslations, useLocale } from 'next-intl';
+import { useTheme } from '@/app/components/ThemeProvider'; // <-- Import useTheme
 
 export default function QuotePage() {
   const t = useTranslations('DevisPage');
   const locale = useLocale();
+  const { darkMode, toggleDarkMode } = useTheme(); // <-- Use context for theme
   const [step, setStep] = useState(1);
-  const [darkMode, setDarkMode] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -226,28 +227,8 @@ export default function QuotePage() {
   const totalPrice = calculateTotal();
   const categories = [...new Set(services.map(s => s.category))];
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('darkMode');
-    if (savedTheme) {
-      setDarkMode(savedTheme === 'true');
-    } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setDarkMode(prefersDark);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('darkMode', darkMode.toString());
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
+  // Removed redundant useEffects for dark mode.
+  // ThemeProvider in app/layout.js handles this.
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
@@ -604,7 +585,7 @@ export default function QuotePage() {
                 </div>
 
                 <div className="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-6 transition-colors">
-                  <div className="flex justify-between items-center text-2xl font-bold">
+                  <div className="flex flex-col sm:flex-row justify-between sm:items-center text-2xl font-bold">
                     <span className="text-gray-900 dark:text-white transition-colors">{t('summaryTotal')}</span>
                     <span className="text-orange-600 dark:text-orange-400 transition-colors">
                       {totalPrice.toLocaleString()} DZD
@@ -667,7 +648,11 @@ export default function QuotePage() {
               </p>
             </div>
             <button
-              onClick={() => setStep(step === 1 ? 2 : step === 2 ? 3 : step)}
+              onClick={() => {
+                if (step === 1) setStep(2);
+                else if (step === 2) setStep(3);
+                else if (step === 3) handleSubmit();
+              }}
               className="px-6 py-3 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-lg font-bold hover:from-orange-600 hover:to-red-700 transition-all"
             >
               {step === 1 ? t('floatingContinue') : step === 2 ? t('floatingFinalize') : t('floatingSubmit')}

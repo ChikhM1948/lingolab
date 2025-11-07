@@ -1,8 +1,9 @@
 // app/components/Footer.jsx
+// ============================================
 'use client';
 import { Linkedin, Facebook, Send, Github } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { Link } from 'next-intl'; // Use next-intl's Link
+import { Link } from '@/navigation'; // ✅ Fixed import
 
 export default function Footer() {
   const t = useTranslations('Footer');

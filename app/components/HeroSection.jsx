@@ -2,11 +2,11 @@
 'use client'; 
 
 import { GraduationCap } from 'lucide-react';
-import { useTranslations } from 'next-intl'; // Import hook
-import { Link } from 'next-intl'; // Import Link
+import { useTranslations } from 'next-intl';
+import { Link } from '@/navigation'; // Import from your navigation.js file
 
 export default function HeroSection({ scrollToSection }) {
-  const t = useTranslations('HeroSection'); // Use the "HeroSection" section of your JSON
+  const t = useTranslations('HeroSection');
 
   return (
     <section id="accueil" className="pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-red-100 dark:from-gray-900 dark:to-gray-800">
@@ -22,7 +22,6 @@ export default function HeroSection({ scrollToSection }) {
               {t('subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {/* Use next-intl Link */}
               <Link 
                 href="/formation" 
                 className="flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold rounded-lg shadow-lg transition-all transform hover:scale-105 animate-pulse-slow"
@@ -31,7 +30,6 @@ export default function HeroSection({ scrollToSection }) {
                 {t('trainingButton')}
               </Link>
               
-              {/* Use next-intl Link */}
               <Link 
                 href="/devis"
                 className="px-8 py-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-semibold rounded-lg shadow-lg border-2 border-gray-300 dark:border-gray-700 hover:border-orange-600 dark:hover:border-orange-400 transition-all"
