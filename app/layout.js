@@ -12,23 +12,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
-  title: "DevLab - Services Informatiques",
-  description: "Votre partenaire technologique de A à Z en Algérie",
-  
-  // --- FAVICON AJOUTÉ ---
-  // Placez vos fichiers (favicon.ico, apple-touch-icon.png)
-  // dans le dossier /public à la racine de votre projet.
-  icons: {
-    icon: '/favicon.ico', // Pour les navigateurs
-    apple: '/apple-touch-icon.png', // Pour les appareils Apple
-  }
-  // --- FIN FAVICON ---
-};
-
+// Note: Metadata is now in [locale]/layout.js
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr" suppressHydrationWarning>
+    // The lang and dir attributes will be handled by the [locale] layout
+    <html suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

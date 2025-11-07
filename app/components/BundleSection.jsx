@@ -1,8 +1,12 @@
+// app/components/BundleSection.jsx
+'use client';
 import { Gift } from 'lucide-react';
-// We'll use a standard <a> tag for navigation, which works with the App Router
-// import Link from 'next/link'; 
+import { Link } from 'next-intl'; // Use next-intl's Link
+import { useTranslations } from 'next-intl';
 
 export default function BundleSection({ scrollToSection }) {
+  const t = useTranslations('BundleSection');
+
   return (
     <section 
       id="bundle" 
@@ -17,36 +21,36 @@ export default function BundleSection({ scrollToSection }) {
       <div className="max-w-5xl mx-auto text-center relative z-10">
         <div className="inline-flex items-center gap-3 bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-lg mb-8 border border-gray-200 dark:border-gray-700">
           <Gift className="w-6 h-6 text-orange-600 dark:text-orange-400" />
-          <span className="font-bold text-lg text-gray-900 dark:text-white">Offre Spéciale Bundle</span>
+          <span className="font-bold text-lg text-gray-900 dark:text-white">{t('tag')}</span>
         </div>
         <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-          Pack Complet Entreprise
+          {t('title')}
         </h2>
         <p className="text-xl text-gray-700 dark:text-gray-300 mb-12 max-w-3xl mx-auto">
-          Économisez jusqu'à 30% en combinant plusieurs services : Développement Web + Mobile + Marketing Digital + Formation
+          {t('subtitle')}
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-            <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">30%</div>
-            <div className="text-gray-700 dark:text-gray-300">d'économie</div>
+            <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">{t('stat1_title')}</div>
+            <div className="text-gray-700 dark:text-gray-300">{t('stat1_desc')}</div>
           </div>
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-            <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">4+</div>
-            <div className="text-gray-700 dark:text-gray-300">Services inclus</div>
+            <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">{t('stat2_title')}</div>
+            <div className="text-gray-700 dark:text-gray-300">{t('stat2_desc')}</div>
           </div>
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-            <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">24/7</div>
-            <div className="text-gray-700 dark:text-gray-300">Support prioritaire</div>
+            <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">{t('stat3_title')}</div>
+            <div className="text-gray-700 dark:text-gray-300">{t('stat3_desc')}</div>
           </div>
         </div>
 
-        <a 
+        <Link 
           href="/bundle" 
           className="px-10 py-5 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold text-lg rounded-lg shadow-2xl transition-all transform hover:scale-105"
         >
-          Découvrir le Bundle
-        </a>
+          {t('button')}
+        </Link>
       </div>
     </section>
   );

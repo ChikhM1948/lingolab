@@ -1,45 +1,48 @@
+// app/components/AboutSection.jsx
+'use client';
 import { 
   GraduationCap, 
   BookOpen, 
   CheckCircle, 
   ArrowRight, 
-  MessageSquare, // New icon
-  Presentation  // New icon
+  MessageSquare,
+  Presentation
 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export default function AboutSection() {
-  
-  // Your projects, as requested
+  const t = useTranslations('AboutSection');
+
   const projects = [
     {
       icon: GraduationCap,
-      name: "Wahrani Academy",
-      description: "Une plateforme e-learning complète offrant des cours et des formations en ligne pour divers domaines.",
-      link: "https://www.academywahrani.com/", // Updated link
+      name: t('project1_name'),
+      description: t('project1_desc'),
+      link: "https://www.academywahrani.com/",
     },
     {
       icon: BookOpen,
-      name: "Polynote.online",
-      description: "Une application web innovante de gestion de notes et de scolarité conçue pour les étudiants.",
+      name: t('project2_name'),
+      description: t('project2_desc'),
       link: "https://polynote.online",
     },
     {
       icon: CheckCircle,
-      name: "Attendance Tracker",
-      description: "Solution web de gestion de la présence, simplifiant le suivi pour les universités et les organisations.",
-      link: "https://attendance-tracker-beta1-0-1.vercel.app/", // Updated link
+      name: t('project3_name'),
+      description: t('project3_desc'),
+      link: "https://attendance-tracker-beta1-0-1.vercel.app/",
     },
     {
       icon: MessageSquare,
-      name: "Forum Lingo Lab",
-      description: "Une plateforme de forum communautaire pour l'apprentissage et l'échange linguistique.",
-      link: "https://forum-lingo-lab-qfwt.vercel.app/", // Added project
+      name: t('project4_name'),
+      description: t('project4_desc'),
+      link: "https://forum-lingo-lab-qfwt.vercel.app/",
     },
     {
       icon: Presentation,
-      name: "Colloquium Univ Relizane",
-      description: "Site informationnel et d'inscription pour un colloque universitaire, gérant les participants.",
-      link: "https://www.colloquiumunivrelizane.info/", // Added project
+      name: t('project5_name'),
+      description: t('project5_desc'),
+      link: "https://www.colloquiumunivrelizane.info/",
     }
   ];
 
@@ -47,20 +50,18 @@ export default function AboutSection() {
     <section id="apropos" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto">
         
-        {/* Section Header */}
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-8">
-            Du Concept à la Réalité Concrète
+            {t('title')}
           </h2>
           <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-            Chez DevLab, nous ne faisons pas que parler de transformation digitale, nous la réalisons. Nous sommes fiers de bâtir des solutions robustes qui servent des milliers d'utilisateurs en Algérie.
+            {t('subtitle')}
           </p>
         </div>
 
-        {/* --- Portfolio Section --- */}
         <div className="text-center mb-12">
           <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
-            Quelques-uns de nos projets
+            {t('projectsTitle')}
           </h3>
         </div>
 
@@ -82,7 +83,6 @@ export default function AboutSection() {
                 </p>
               </div>
 
-              {/* Card Footer Link */}
               <div className="p-6 bg-gray-50 dark:bg-gray-800">
                 <a
                   href={project.link}
@@ -94,15 +94,13 @@ export default function AboutSection() {
                       : 'bg-gradient-to-r from-orange-500 to-red-500 text-white hover:from-orange-600 hover:to-red-600 transform hover:scale-105'
                   }`}
                 >
-                  {project.link === "#" ? "Déploiement Bientôt" : "Visiter le site"}
+                  {project.link === "#" ? t('comingSoon') : t('visitSite')}
                   {project.link !== "#" && <ArrowRight className="w-5 h-5" />}
                 </a>
               </div>
             </div>
           ))}
         </div>
-        {/* --- End of Portfolio Section --- */}
-
       </div>
     </section>
   );

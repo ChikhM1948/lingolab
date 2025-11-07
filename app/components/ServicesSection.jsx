@@ -1,29 +1,34 @@
+// app/components/ServicesSection.jsx
+'use client';
 import { Code, Smartphone, Monitor, TrendingUp, Users, Palette, BookOpen, Shield, Video } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export default function ServicesSection() {
+  const t = useTranslations('ServicesSection');
+
   const services = [
     {
-      category: "Développement",
+      category: t('cat1'),
       items: [
-        { icon: Code, title: "Développement Web", desc: "Sites web modernes et applications performantes adaptés à vos besoins" },
-        { icon: Smartphone, title: "Développement Mobile", desc: "Applications iOS et Android natives et cross-platform" },
-        { icon: Monitor, title: "Logiciels Sur Mesure", desc: "Solutions logicielles personnalisées pour optimiser votre activité" }
+        { icon: Code, title: t('s1_title'), desc: t('s1_desc') },
+        { icon: Smartphone, title: t('s2_title'), desc: t('s2_desc') },
+        { icon: Monitor, title: t('s3_title'), desc: t('s3_desc') }
       ]
     },
     {
-      category: "Croissance & Marketing",
+      category: t('cat2'),
       items: [
-        { icon: TrendingUp, title: "Sponsor Scaling", desc: "Maximisez votre ROI avec des stratégies publicitaires optimisées" },
-        { icon: Users, title: "Community Management", desc: "Gestion professionnelle de vos réseaux sociaux et engagement communautaire" },
-        { icon: Palette, title: "Gestion Produit", desc: "Accompagnement stratégique pour le développement de vos produits" }
+        { icon: TrendingUp, title: t('s4_title'), desc: t('s4_desc') },
+        { icon: Users, title: t('s5_title'), desc: t('s5_desc') },
+        { icon: Palette, title: t('s6_title'), desc: t('s6_desc') }
       ]
     },
     {
-      category: "Expertise & Création",
+      category: t('cat3'),
       items: [
-        { icon: BookOpen, title: "Formation", desc: "Programmes de formation adaptés pour développer les compétences de vos équipes" },
-        { icon: Shield, title: "Cybersécurité", desc: "Protection avancée de vos systèmes et données sensibles" },
-        { icon: Video, title: "Design & Montage", desc: "Création graphique et montage vidéo professionnel pour votre image de marque" }
+        { icon: BookOpen, title: t('s7_title'), desc: t('s7_desc') },
+        { icon: Shield, title: t('s8_title'), desc: t('s8_desc') },
+        { icon: Video, title: t('s9_title'), desc: t('s9_desc') }
       ]
     }
   ];
@@ -33,10 +38,10 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Des Solutions Complètes pour Votre Croissance
+            {t('title')}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Une gamme complète de services pour répondre à tous vos besoins numériques
+            {t('subtitle')}
           </p>
         </div>
 

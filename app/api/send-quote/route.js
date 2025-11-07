@@ -1,35 +1,47 @@
 // app/api/send-quote/route.js
+import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+
+// Helper function to load translations
+// We use a relative path to go up from /api/send-quote to /messages
+async function getTranslations(locale) {
+  let messages;
+  try {
+    messages = (await import(`../../../messages/${locale}.json`)).default;
+  } catch (error) {
+    // Fallback to French if the locale file doesn't exist
+    console.warn(`No translation file found for locale: ${locale}.Falling back to 'fr'.`);
+    messages = (await import(`../../../messages/fr.json`)).default;
+  }
+  return messages.QuoteEmail; // Return only the email section
+}
 
 export async function POST(request) {
   try {
     const data = await request.json();
-    const { name, email, phone, company, services, budget, timeline, message, totalPrice } = data;
+    const { name, email, phone, company, services, budget, timeline, message, totalPrice, locale } = data;
 
-    // Configuration du transporteur Gmail avec fix pour certificat auto-signé
+    // Get translations for the specified locale
+    const t = await getTranslations(locale || 'fr');
+
+    // Configuration du transporteur Gmail
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.GMAIL_USER, // Votre email Gmail
-        pass: process.env.GMAIL_APP_PASSWORD, // Mot de passe d'application Gmail
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
       },
-      // 🔧 SOLUTION pour l'erreur 'self-signed certificate'
-      // Pour le développement local UNIQUEMENT
       tls: {
-        rejectUnauthorized: false
+        // Only disable for development
+        rejectUnauthorized: process.env.NODE_ENV === 'production' 
       }
     });
 
-    // Services sélectionnés formatés
-    const servicesList = services.map(s => 
-      `- ${s.name}: ${s.price.toLocaleString()} DZD`
-    ).join('\n');
-
-    // Email au client
+    // Email au client (TRANSLATED)
     const clientMailOptions = {
       from: `DevLab <${process.env.GMAIL_USER}>`,
       to: email,
-      subject: '✅ Confirmation de votre demande de devis - DevLab',
+      subject: t.client.subject,
       html: `
         <!DOCTYPE html>
         <html>
@@ -46,22 +58,22 @@ export async function POST(request) {
             .button { display: inline-block; padding: 12px 30px; background: linear-gradient(135deg, #f97316 0%, #dc2626 100%); color: white; text-decoration: none; border-radius: 8px; margin: 10px 0; }
           </style>
         </head>
-        <body>
+        <body style="direction: ${locale === 'ar' ? 'rtl' : 'ltr'};">
           <div class="container">
             <div class="header">
-              <h1>🎉 Demande de Devis Reçue</h1>
+              <h1>${t.client.header}</h1>
             </div>
             
             <div class="content">
-              <p>Bonjour <strong>${name}</strong>,</p>
+              <p>${t.client.greeting} <strong>${name}</strong>,</p>
               
-              <p>Merci d'avoir choisi <strong>DevLab</strong> pour votre projet digital !</p>
+              <p>${t.client.thankYou}</p>
               
-              <p>Nous avons bien reçu votre demande de devis et nous vous contacterons dans les <strong>24 heures</strong>.</p>
+              <p>${t.client.contactYou}</p>
               
-              <h2 style="color: #f97316; border-bottom: 2px solid #f97316; padding-bottom: 10px;">📋 Récapitulatif de votre demande</h2>
+              <h2 style="color: #f97316; border-bottom: 2px solid #f97316; padding-bottom: 10px;">${t.client.summaryTitle}</h2>
               
-              <h3>Services sélectionnés :</h3>
+              <h3>${t.client.servicesTitle}</h3>
               ${services.map(s => `
                 <div class="service-item">
                   <strong>${s.name}</strong><br>
@@ -71,37 +83,37 @@ export async function POST(request) {
               `).join('')}
               
               <div class="total">
-                <p style="margin: 0; font-size: 18px; color: #6b7280;">Total Estimé</p>
+                <p style="margin: 0; font-size: 18px; color: #6b7280;">${t.client.totalEstimate}</p>
                 <div class="total-amount">${totalPrice.toLocaleString()} DZD</div>
-                <p style="margin: 0; font-size: 14px; color: #6b7280;">* Prix indicatif, un devis détaillé vous sera envoyé</p>
+                <p style="margin: 0; font-size: 14px; color: #6b7280;">${t.client.totalDisclaimer}</p>
               </div>
               
-              <h3>Informations du projet :</h3>
+              <h3>${t.client.projectInfoTitle}</h3>
               <ul>
-                ${company ? `<li><strong>Entreprise :</strong> ${company}</li>` : ''}
-                <li><strong>Budget :</strong> ${budget || 'Non spécifié'}</li>
-                <li><strong>Délai souhaité :</strong> ${timeline || 'Non spécifié'}</li>
-                ${message ? `<li><strong>Message :</strong> ${message}</li>` : ''}
+                ${company ? `<li><strong>${t.client.company}:</strong> ${company}</li>` : ''}
+                <li><strong>${t.client.budget}:</strong> ${budget || t.client.notSpecified}</li>
+                <li><strong>${t.client.timeline}:</strong> ${timeline || t.client.notSpecified}</li>
+                ${message ? `<li><strong>${t.client.message}:</strong> ${message}</li>` : ''}
               </ul>
               
-              <h3>Prochaines étapes :</h3>
+              <h3>${t.client.nextStepsTitle}</h3>
               <ol>
-                <li>Notre équipe étudie votre demande</li>
-                <li>Nous vous contactons sous 24h</li>
-                <li>Discussion détaillée de votre projet</li>
-                <li>Envoi du devis personnalisé</li>
+                <li>${t.client.step1}</li>
+                <li>${t.client.step2}</li>
+                <li>${t.client.step3}</li>
+                <li>${t.client.step4}</li>
               </ol>
               
               <div style="text-align: center; margin: 30px 0;">
-                <a href="https://devlab.dz" class="button">Visiter notre site</a>
+                <a href="https://devlab.dz" class="button">${t.client.visitSite}</a>
               </div>
             </div>
             
             <div class="footer">
-              <p><strong>DevLab - Votre Partenaire Digital en Algérie</strong></p>
+              <p><strong>${t.client.footerTitle}</strong></p>
               <p>Email: contact@devlab.services | Tél: +213 698 784 457</p>
               <p style="font-size: 12px; margin-top: 20px;">
-                Cet email a été envoyé automatiquement suite à votre demande de devis.
+                ${t.client.footerNote}
               </p>
             </div>
           </div>
@@ -110,11 +122,11 @@ export async function POST(request) {
       `,
     };
 
-    // Email à l'équipe DevLab
+    // Email à l'équipe DevLab (TRANSLATED)
     const adminMailOptions = {
       from: `DevLab <${process.env.GMAIL_USER}>`,
       to: process.env.ADMIN_EMAIL || process.env.GMAIL_USER,
-      subject: `🔔 Nouvelle demande de devis - ${name}`,
+      subject: t.admin.subject.replace('{name}', name),
       html: `
         <!DOCTYPE html>
         <html>
@@ -130,27 +142,27 @@ export async function POST(request) {
             .urgent { background: #fef2f2; border: 2px solid #dc2626; padding: 15px; border-radius: 8px; margin: 20px 0; }
           </style>
         </head>
-        <body>
+        <body style="direction: ${locale === 'ar' ? 'rtl' : 'ltr'};">
           <div class="container">
             <div class="header">
-              <h1>🔔 Nouvelle Demande de Devis</h1>
-              <p style="margin: 0;">Un client potentiel a soumis une demande</p>
+              <h1>${t.admin.header}</h1>
+              <p style="margin: 0;">${t.admin.subtitle}</p>
             </div>
             
             <div class="content">
               <div class="urgent">
-                <strong>⚡ ACTION REQUISE :</strong> Contacter le client dans les 24 heures
+                ${t.admin.actionRequired}
               </div>
               
-              <h2 style="color: #f97316;">👤 Informations du Client</h2>
+              <h2 style="color: #f97316;">${t.admin.clientInfoTitle}</h2>
               <div class="info-box">
-                <p><strong>Nom :</strong> ${name}</p>
-                ${company ? `<p><strong>Entreprise :</strong> ${company}</p>` : ''}
-                <p><strong>Email :</strong> <a href="mailto:${email}">${email}</a></p>
-                <p><strong>Téléphone :</strong> <a href="tel:${phone}">${phone}</a></p>
+                <p><strong>${t.admin.name}:</strong> ${name}</p>
+                ${company ? `<p><strong>${t.admin.company}:</strong> ${company}</p>` : ''}
+                <p><strong>${t.admin.email}:</strong> <a href="mailto:${email}">${email}</a></p>
+                <p><strong>${t.admin.phone}:</strong> <a href="tel:${phone}">${phone}</a></p>
               </div>
               
-              <h2 style="color: #f97316;">💼 Services Demandés</h2>
+              <h2 style="color: #f97316;">${t.admin.servicesTitle}</h2>
               ${services.map(s => `
                 <div class="service-item">
                   <strong>${s.name}</strong> - ${s.price.toLocaleString()} DZD<br>
@@ -159,30 +171,27 @@ export async function POST(request) {
               `).join('')}
               
               <div class="total">
-                <h3 style="margin: 0; color: #dc2626;">TOTAL: ${totalPrice.toLocaleString()} DZD</h3>
+                <h3 style="margin: 0; color: #dc2626;">${t.admin.total.replace('{totalPrice}', totalPrice.toLocaleString())}</h3>
               </div>
               
-              <h2 style="color: #f97316;">📊 Détails du Projet</h2>
+              <h2 style="color: #f97316;">${t.admin.projectDetailsTitle}</h2>
               <div class="info-box">
-                <p><strong>Budget estimé :</strong> ${budget || 'Non spécifié'}</p>
-                <p><strong>Délai souhaité :</strong> ${timeline || 'Non spécifié'}</p>
-                ${message ? `<p><strong>Message :</strong><br>${message}</p>` : ''}
+                <p><strong>${t.admin.budget}:</strong> ${budget || t.admin.notSpecified}</p>
+                <p><strong>${t.admin.timeline}:</strong> ${timeline || t.admin.notSpecified}</p>
+                ${message ? `<p><strong>${t.admin.message}:</strong><br>${message}</p>` : ''}
               </div>
               
-              <h2 style="color: #f97316;">✅ Actions à faire</h2>
+              <h2 style="color: #f97316;">${t.admin.actionsTitle}</h2>
               <ol>
-                <li>Vérifier la disponibilité de l'équipe</li>
-                <li>Préparer le devis détaillé</li>
-                <li>Contacter le client par téléphone</li>
-                <li>Envoyer le devis personnalisé</li>
-                <li>Planifier un meeting de découverte</li>
+                <li>${t.admin.action1}</li>
+                <li>${t.admin.action2}</li>
+                <li>${t.admin.action3}</li>
+                <li>${t.admin.action4}</li>
+                <li>${t.admin.action5}</li>
               </ol>
               
               <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; margin-top: 20px;">
-                <p style="margin: 0;"><strong>📅 Demande reçue le :</strong> ${new Date().toLocaleString('fr-DZ', { 
-                  dateStyle: 'full', 
-                  timeStyle: 'short' 
-                })}</p>
+                <p style="margin: 0;">${t.admin.receivedOn.replace('{date}', new Date().toLocaleString(locale))}</p>
               </div>
             </div>
           </div>
@@ -195,20 +204,22 @@ export async function POST(request) {
     await transporter.sendMail(clientMailOptions);
     await transporter.sendMail(adminMailOptions);
 
-    return Response.json(
+    return NextResponse.json(
       { 
         success: true, 
-        message: 'Demande envoyée avec succès' 
+        message: t.client.successMessage 
       },
       { status: 200 }
     );
 
   } catch (error) {
     console.error('Erreur lors de l\'envoi:', error);
-    return Response.json(
+    // Attempt to get 'fr' translations for the error message as a last resort
+    const t = await getTranslations('fr'); 
+    return NextResponse.json(
       { 
         success: false, 
-        error: 'Erreur lors de l\'envoi de la demande',
+        error: t.apiError, // 'Erreur lors de l\'envoi de la demande'
         details: error.message 
       },
       { status: 500 }

@@ -1,15 +1,21 @@
+// app/components/TestimonialsSection.jsx
+'use client';
+import { useTranslations } from 'next-intl';
+
 export default function TestimonialsSection() {
+  const t = useTranslations('TestimonialsSection');
+  
   const testimonials = [
-    { name: "Ahmed B.", company: "StartUp Tech DZ", text: "Une équipe exceptionnelle qui a transformé notre vision en réalité. Notre application mobile dépasse toutes nos attentes." },
-    { name: "Leila M.", company: "Commerce Plus", text: "Professionnalisme et expertise remarquables. Notre site e-commerce génère maintenant 3x plus de ventes." },
-    { name: "Karim F.", company: "Industries Modernes", text: "Un partenaire de confiance qui comprend nos besoins. Leur solution logicielle a révolutionné notre gestion." }
+    { name: t('t1_name'), company: t('t1_company'), text: t('t1_text') },
+    { name: t('t2_name'), company: t('t2_company'), text: t('t2_text') },
+    { name: t('t3_name'), company: t('t3_company'), text: t('t3_text') }
   ];
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-16 text-center">
-          Ce Que Disent Nos Clients
+          {t('title')}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, idx) => (
