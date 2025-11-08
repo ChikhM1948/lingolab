@@ -1,14 +1,22 @@
-// app/[locale]/layout.js (COMPLETE REPLACEMENT WITH DEBUG)
+// app/[locale]/layout.js
 import '../globals.css';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { Inter } from 'next/font/google';
+import { Inter, Noto_Kufi_Arabic } from 'next/font/google';
 import { ThemeProvider } from '../components/ThemeProvider';
 
 const inter = Inter({ 
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
+});
+
+const notoKufiArabic = Noto_Kufi_Arabic({
+  subsets: ['arabic'],
+  variable: '--font-noto-kufi-arabic',
+  display: 'swap',
+  weight: ['400', '500', '600', '700', '800'],
 });
 
 export const metadata = {
@@ -20,7 +28,6 @@ export const metadata = {
   }
 };
 
-// Updated to use the correct locales array
 export function generateStaticParams() {
   return [
     { locale: 'fr' },
@@ -51,8 +58,27 @@ export default async function LocaleLayout({ children, params }) {
       lang={locale} 
       dir={locale === 'ar' ? 'rtl' : 'ltr'} 
       suppressHydrationWarning
+      className={`${inter.variable} ${notoKufiArabic.variable}`}
     >
-      <body className={`${inter.variable} antialiased`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const theme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (theme === 'dark' || (!theme && prefersDark)) {
+                  document.documentElement.classList.add('dark');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
+      <body 
+        className={`${locale === 'ar' ? 'font-arabic' : 'font-sans'} antialiased`} 
+        suppressHydrationWarning
+      >
         <ThemeProvider>
           <NextIntlClientProvider locale={locale} messages={messages}>
             {children}

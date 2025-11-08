@@ -3,7 +3,8 @@
 @theme {
   --color-background: #ffffff;
   --color-foreground: #171717;
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
+  --font-arabic: var(--font-noto-kufi-arabic);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -29,6 +30,38 @@ html.dark {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Apply Inter font for Latin scripts */
+body:not(.font-arabic) {
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+/* Apply Noto Kufi Arabic for Arabic script */
+body.font-arabic {
+  font-family: var(--font-noto-kufi-arabic), Arial, sans-serif;
+  font-feature-settings: "liga" 1, "calt" 1; /* Enable ligatures for better Arabic rendering */
+}
+
+/* Smooth font rendering for both */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Ensure proper line height for Arabic text */
+[dir="rtl"] {
+  line-height: 1.8;
+}
+
+/* Better letter spacing for Arabic headings */
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+  letter-spacing: 0.02em;
 }

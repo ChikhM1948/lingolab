@@ -1,9 +1,8 @@
-// app/components/ThemeProvider.jsx (COMPLETE REPLACEMENT)
+// app/components/ThemeProvider.jsx
 'use client';
 
 import { createContext, useContext, useEffect, useState } from 'react';
 
-// Create context with default values to prevent undefined
 const ThemeContext = createContext({
   darkMode: false,
   toggleDarkMode: () => {},
@@ -13,22 +12,25 @@ export function ThemeProvider({ children }) {
   const [darkMode, setDarkMode] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Initialize theme on mount
+  // Initialize theme on mount only
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
-    
-    setDarkMode(shouldBeDark);
-    document.documentElement.classList.toggle('dark', shouldBeDark);
     setMounted(true);
+    
+    // Read from DOM instead of localStorage initially to match SSR
+    const isDarkClass = document.documentElement.classList.contains('dark');
+    setDarkMode(isDarkClass);
   }, []);
 
-  // Update DOM when darkMode changes
+  // Sync theme changes to DOM and localStorage
   useEffect(() => {
-    if (mounted) {
-      document.documentElement.classList.toggle('dark', darkMode);
-      localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+    if (!mounted) return;
+    
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
   }, [darkMode, mounted]);
 
@@ -36,7 +38,11 @@ export function ThemeProvider({ children }) {
     setDarkMode(prev => !prev);
   };
 
-  // Always provide the context, even during SSR
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!mounted) {
+    return <>{children}</>;
+  }
+
   return (
     <ThemeContext.Provider value={{ darkMode, toggleDarkMode }}>
       {children}
@@ -46,6 +52,8 @@ export function ThemeProvider({ children }) {
 
 export function useTheme() {
   const context = useContext(ThemeContext);
-  // Context should never be undefined because we provide default values
+  if (!context) {
+    throw new Error('useTheme must be used within ThemeProvider');
+  }
   return context;
 }
