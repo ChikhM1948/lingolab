@@ -1,10 +1,10 @@
-// app/components/LocaleSwitcher.jsx
+// app/components/LocaleSwitcher.jsx (REPLACE WITH THIS)
 'use client';
 
 import { useState, useTransition, useRef, useEffect } from 'react';
 import { useLocale } from 'next-intl';
-import { useRouter, usePathname } from '@/navigation';
-import { Globe, Check } from 'lucide-react'; // Import your icons
+import { useRouter, usePathname } from '../../i18n/routing'; // ✅ FIXED: Use relative path
+import { Globe, Check } from 'lucide-react';
 
 export default function LocaleSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,15 +14,14 @@ export default function LocaleSwitcher() {
   const pathname = usePathname();
   const wrapperRef = useRef(null);
 
-  // --- Locales you support ---
-  // (Based on your layout.js file)
+  // Locales you support
   const locales = [
     { code: 'en', name: 'English' },
     { code: 'fr', name: 'Français' },
     { code: 'ar', name: 'العربية' }
   ];
 
-  // --- Handle language change ---
+  // Handle language change
   const onSelectLocale = (newLocale) => {
     startTransition(() => {
       router.replace(pathname, { locale: newLocale });
@@ -30,7 +29,7 @@ export default function LocaleSwitcher() {
     });
   };
 
-  // --- Handle clicking outside to close ---
+  // Handle clicking outside to close
   useEffect(() => {
     function handleClickOutside(event) {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
@@ -41,13 +40,10 @@ export default function LocaleSwitcher() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [wrapperRef]);
+  }, []);
 
   return (
-    // Use a ref for the wrapper to detect outside clicks
     <div className="relative" ref={wrapperRef}>
-      
-      {/* This is the main button with the Globe icon */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         disabled={isPending}
@@ -57,11 +53,10 @@ export default function LocaleSwitcher() {
         <Globe className="w-5 h-5" />
       </button>
 
-      {/* This is the dropdown menu */}
       {isOpen && (
         <div 
           className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-10 overflow-hidden"
-          dir={locale === 'ar' ? 'rtl' : 'ltr'} // Set direction based on locale
+          dir={locale === 'ar' ? 'rtl' : 'ltr'}
         >
           <ul className="py-1">
             {locales.map((loc) => (
@@ -75,7 +70,6 @@ export default function LocaleSwitcher() {
                       : 'text-gray-700 dark:text-gray-300'
                   } hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50`}
                 >
-                  {/* Handle RTL/LTR text alignment */}
                   <span className="flex-1 text-left" dir="ltr">{loc.name}</span>
                   {locale === loc.code && <Check className="w-4 h-4" />}
                 </button>

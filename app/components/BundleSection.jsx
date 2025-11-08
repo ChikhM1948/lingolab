@@ -1,7 +1,7 @@
 // app/components/BundleSection.jsx
 'use client';
 import { Gift } from 'lucide-react';
-import { Link } from '@/navigation'; // ✅ Fixed import
+import { Link } from '../../i18n/routing';
 import { useTranslations } from 'next-intl';
 
 export default function BundleSection({ scrollToSection }) {

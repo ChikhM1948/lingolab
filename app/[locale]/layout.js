@@ -1,15 +1,11 @@
-// app/[locale]/layout.js
-
-// 👇 ADD THIS LINE
-import '../globals.css'; // Adjust path if your global CSS is elsewhere
-
+// app/[locale]/layout.js (COMPLETE REPLACEMENT WITH DEBUG)
+import '../globals.css';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Inter } from 'next/font/google';
-import { ThemeProvider } from '../components/ThemeProvider'; 
+import { ThemeProvider } from '../components/ThemeProvider';
 
-// Initialize your fonts
 const inter = Inter({ 
   subsets: ['latin'],
   variable: '--font-inter',
@@ -24,7 +20,7 @@ export const metadata = {
   }
 };
 
-// Generate static params for all locales
+// Updated to use the correct locales array
 export function generateStaticParams() {
   return [
     { locale: 'fr' },
@@ -36,6 +32,12 @@ export function generateStaticParams() {
 export default async function LocaleLayout({ children, params }) {
   const { locale } = await params;
   
+  // Validate locale
+  const validLocales = ['fr', 'en', 'ar'];
+  if (!validLocales.includes(locale)) {
+    notFound();
+  }
+
   let messages;
   try {
     messages = await getMessages();
@@ -48,15 +50,10 @@ export default async function LocaleLayout({ children, params }) {
     <html 
       lang={locale} 
       dir={locale === 'ar' ? 'rtl' : 'ltr'} 
-      suppressHydrationWarning 
+      suppressHydrationWarning
     >
-      <body className={`${inter.variable} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+      <body className={`${inter.variable} antialiased`} suppressHydrationWarning>
+        <ThemeProvider>
           <NextIntlClientProvider locale={locale} messages={messages}>
             {children}
           </NextIntlClientProvider>

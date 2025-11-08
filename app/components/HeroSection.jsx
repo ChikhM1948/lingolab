@@ -3,7 +3,7 @@
 
 import { GraduationCap } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/navigation'; // Import from your navigation.js file
+import { Link } from '../../i18n/routing';
 
 export default function HeroSection({ scrollToSection }) {
   const t = useTranslations('HeroSection');

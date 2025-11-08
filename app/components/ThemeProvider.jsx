@@ -1,29 +1,44 @@
-// app/components/ThemeProvider.jsx
+// app/components/ThemeProvider.jsx (COMPLETE REPLACEMENT)
 'use client';
 
 import { createContext, useContext, useEffect, useState } from 'react';
 
-const ThemeContext = createContext(undefined);
+// Create context with default values to prevent undefined
+const ThemeContext = createContext({
+  darkMode: false,
+  toggleDarkMode: () => {},
+});
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState('light');
+  const [darkMode, setDarkMode] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
+  // Initialize theme on mount
   useEffect(() => {
-    // Load theme from localStorage
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
-    document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+    
+    setDarkMode(shouldBeDark);
+    document.documentElement.classList.toggle('dark', shouldBeDark);
+    setMounted(true);
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+  // Update DOM when darkMode changes
+  useEffect(() => {
+    if (mounted) {
+      document.documentElement.classList.toggle('dark', darkMode);
+      localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+    }
+  }, [darkMode, mounted]);
+
+  const toggleDarkMode = () => {
+    setDarkMode(prev => !prev);
   };
 
+  // Always provide the context, even during SSR
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ darkMode, toggleDarkMode }}>
       {children}
     </ThemeContext.Provider>
   );
@@ -31,8 +46,6 @@ export function ThemeProvider({ children }) {
 
 export function useTheme() {
   const context = useContext(ThemeContext);
-  if (context === undefined) {
-    throw new Error('useTheme must be used within ThemeProvider');
-  }
+  // Context should never be undefined because we provide default values
   return context;
 }

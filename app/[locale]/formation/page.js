@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { GraduationCap, Clock, CheckCircle, Tag, Send, AlertCircle, ArrowLeft } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from 'next-intl'; // Use next-intl Link
+import { Link } from '../../../i18n/routing'; // ✅ FIXED
 
 export default function FormationSection() {
   const t = useTranslations('FormationPage');

@@ -6,6 +6,8 @@ import { Check, X, Gift, Zap, Shield, Clock, Code, Smartphone, TrendingUp, Users
 import { useTheme } from '@/app/components/ThemeProvider';
 import { Link } from 'next-intl'; // Use next-intl Link
 import { useTranslations } from 'next-intl';
+import { Link } from '../../i18n/routing';
+
 
 export default function BundlePage() {
   const { darkMode } = useTheme();

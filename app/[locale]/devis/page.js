@@ -8,14 +8,14 @@ import {
   Megaphone, Shield, Zap, Users, Mail, Phone,
   CheckCircle2, Package, Sparkles, Moon, Sun
 } from 'lucide-react';
-import { Link, usePathname, useRouter } from 'next-intl/navigation'; // <-- CORRECTED IMPORT
+import { Link, usePathname, useRouter } from '../../../i18n/routing'; // ✅ FIXED
 import { useTranslations, useLocale } from 'next-intl';
-import { useTheme } from '@/app/components/ThemeProvider'; // <-- Import useTheme
+import { useTheme } from '@/app/components/ThemeProvider'; // ✅ ENSURE THIS IMPORT
 
 export default function QuotePage() {
   const t = useTranslations('DevisPage');
   const locale = useLocale();
-  const { darkMode, toggleDarkMode } = useTheme(); // <-- Use context for theme
+  const { darkMode, toggleDarkMode } = useTheme(); // ✅ THIS SHOULD NOW WORK
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
@@ -27,7 +27,6 @@ export default function QuotePage() {
     timeline: '',
     message: ''
   });
-
   // Dynamically generate services from translations
   const services = [
     {

@@ -3,7 +3,7 @@
 'use client';
 import { Linkedin, Facebook, Send, Github } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/navigation'; // ✅ Fixed import
+import { Link } from '../../i18n/routing';
 
 export default function Footer() {
   const t = useTranslations('Footer');

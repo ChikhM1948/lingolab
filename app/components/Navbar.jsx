@@ -1,10 +1,10 @@
-// app/components/Navbar.jsx
+// app/components/Navbar.jsx (UPDATE IMPORTS)
 'use client';
 
 import { Moon, Sun, Menu, X, GraduationCap } from 'lucide-react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/navigation'; // Import from your navigation.js file
+import { Link } from '../../i18n/routing'; // ✅ FIXED: Use relative path
 import LocaleSwitcher from './LocaleSwitcher';
 
 export default function Navbar({ darkMode, toggleDarkMode, mobileMenuOpen, setMobileMenuOpen, scrollToSection }) {
