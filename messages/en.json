@@ -421,19 +421,18 @@
     "title": "Professional Training",
     "subtitle": "Develop your skills with our certified training in web development and office software",
     "formation1_title": "Web Development Training",
-    "formation1_price": 50000,
-    "formation1_duration": "3 months (40 hours)",
+    "formation1_price": 15000,
+    "formation1_duration": "2 months (30 hours)",
     "formation1_desc": "Learn to create modern websites with HTML, CSS, JavaScript, and React",
     "formation1_skills": [
       "Advanced HTML5 & CSS3",
       "JavaScript ES6+",
-      "React & Next.js",
       "Git & deployment",
       "Final portfolio project"
     ],
     "formation2_title": "Complete Office Training",
-    "formation2_price": 35000,
-    "formation2_duration": "2 months (30 hours)",
+    "formation2_price": 7500,
+    "formation2_duration": "1 months (20 hours)",
     "formation2_desc": "Master Microsoft Office tools to boost your productivity",
     "formation2_skills": [
       "Advanced Word",

@@ -25,7 +25,7 @@ export default function FormationSection() {
     {
       id: 'web',
       titre: t('formation1_title'),
-      prix: t.number('formation1_price'),
+      prix: t.raw('formation1_price') || 35000,
       duree: t('formation1_duration'),
       description: t('formation1_desc'),
       competences: t.raw('formation1_skills')
@@ -33,7 +33,7 @@ export default function FormationSection() {
     {
       id: 'bureautique',
       titre: t('formation2_title'),
-      prix: t.number('formation2_price'),
+      prix: t.raw('formation2_price') || 25000,
       duree: t('formation2_duration'),
       description: t('formation2_desc'),
       competences: t.raw('formation2_skills')

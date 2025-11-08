@@ -361,18 +361,15 @@
     "title": "دوراتنا التكوينية",
     "subtitle": "طور مهاراتك مع دوراتنا المكثفة.",
     "formation1_title": "تطوير الويب الشامل (Full-Stack)",
-    "formation1_price": 40000,
-    "formation1_duration": "3 أشهر (مسائي وعطلات نهاية الأسبوع)",
+    "formation1_price": 15000,
+    "formation1_duration": "2 أشهر (مسائي وعطلات نهاية الأسبوع)",
     "formation1_desc": "كن مطور ويب متعدد المهارات. أتقن الواجهة الأمامية (React) والخلفية (Node.js) لإنشاء تطبيقات ويب كاملة.",
     "formation1_skills": [
       "HTML5, CSS3, JavaScript ES6+",
-      "React.js & Next.js",
-      "Node.js, Express.js",
-      "قواعد البيانات (MongoDB, SQL)",
       "النشر (Vercel, Docker)"
     ],
     "formation2_title": "حزمة المكتبية (Word, Excel, PPT)",
-    "formation2_price": 10000,
+    "formation2_price": 7500,
     "formation2_duration": "1 شهر (مرن)",
     "formation2_desc": "أتقن الأدوات الأساسية لمجموعة Office لتحسين إنتاجيتك اليومية، من تحرير النصوص إلى الجداول المحورية.",
     "formation2_skills": [
