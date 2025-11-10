@@ -4,7 +4,9 @@
     "services": "Services",
     "about": "À Propos",
     "getQuote": "Demander un Devis",
-    "training": "Formations"
+    "training": "Formations",
+    "newsletter": "Actualités" 
+
   },
   "HeroSection": {
     "title": "Votre Partenaire Technologique de A à Z",
@@ -529,5 +531,51 @@
     "errorInvalid": "Veuillez entrer une adresse email valide",
     "statusSuccess": "✅ Inscription réussie ! Vérifiez votre boîte mail pour la confirmation.",
     "statusError": "❌ Erreur lors de l'inscription. Veuillez réessayer."
-  }
+  },
+
+  "NewsletterPage": {
+  "backToHome": "Retour à l'accueil",
+  "badge": "Newsletter DevLab",
+  "title": "Restez Connecté à l'Innovation",
+  "subtitle": "Rejoignez notre communauté et recevez chaque mois des insights exclusifs, des conseils d'experts, et les dernières tendances du monde digital directement dans votre boîte mail.",
+  "placeholder": "votre.email@exemple.com",
+  "subscribe": "S'inscrire Gratuitement",
+  "subscribing": "Envoi...",
+  "privacy": "🔒 Vos données sont sécurisées. Pas de spam, désinscription à tout moment.",
+  "errorInvalid": "Veuillez entrer une adresse email valide",
+  "statusSuccess": "✅ Inscription réussie ! Vérifiez votre email pour la confirmation.",
+  "statusError": "❌ Erreur lors de l'inscription. Veuillez réessayer.",
+  "stat1Label": "Abonnés Actifs",
+  "stat2Label": "Newsletters Envoyées",
+  "stat3Label": "Taux de Satisfaction",
+  "benefitsTitle": "Pourquoi S'abonner ?",
+  "benefitsSubtitle": "Découvrez tous les avantages de notre newsletter",
+  "benefit1Title": "Offres Exclusives",
+  "benefit1Desc": "Accédez en avant-première à nos promotions et offres spéciales réservées aux abonnés",
+  "benefit2Title": "Conseils Tech",
+  "benefit2Desc": "Recevez des tutoriels, astuces et bonnes pratiques pour booster vos projets digitaux",
+  "benefit3Title": "Actualités du Secteur",
+  "benefit3Desc": "Restez à jour sur les dernières tendances en développement web et marketing digital",
+  "benefit4Title": "Nouveautés en Avant-Première",
+  "benefit4Desc": "Soyez les premiers informés de nos nouveaux services et fonctionnalités",
+  "benefit5Title": "Études de Cas",
+  "benefit5Desc": "Découvrez comment nous avons aidé nos clients à réussir leur transformation digitale",
+  "benefit6Title": "Événements & Webinaires",
+  "benefit6Desc": "Invitations exclusives à nos formations, ateliers et événements en ligne",
+  "ctaTitle": "Prêt à Rejoindre Notre Communauté ?",
+  "ctaSubtitle": "Inscrivez-vous maintenant et recevez notre guide exclusif gratuit",
+  "ctaButton": "S'inscrire Maintenant",
+  "ctaButton2": "Voir Nos Services",
+  "testimonialsTitle": "Ce Que Disent Nos Abonnés",
+  "testimonialsSubtitle": "Rejoignez des milliers de professionnels satisfaits",
+  "testimonial1Text": "La newsletter DevLab est une mine d'or d'informations. J'ai découvert des techniques qui ont transformé ma façon de travailler !",
+  "testimonial1Name": "Sarah Mansouri",
+  "testimonial1Role": "Développeuse Web Freelance",
+  "testimonial2Text": "Contenu pertinent et actionnable. Chaque email apporte une réelle valeur ajoutée à mon entreprise.",
+  "testimonial2Name": "Karim Boudiaf",
+  "testimonial2Role": "CEO, StartUp Algérie",
+  "testimonial3Text": "Les conseils et tendances partagés m'aident à rester compétitif sur le marché. Excellente ressource !",
+  "testimonial3Name": "Amina Zerrouki",
+  "testimonial3Role": "Marketing Manager"
+}
 }

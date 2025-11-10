@@ -1,7 +1,7 @@
 // app/components/Navbar.jsx (UPDATE IMPORTS)
 'use client';
 
-import { Moon, Sun, Menu, X, GraduationCap } from 'lucide-react';
+import { Moon, Sun, Menu, X, GraduationCap, Mail } from 'lucide-react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '../../i18n/routing'; // ✅ FIXED: Use relative path
@@ -55,20 +55,28 @@ export default function Navbar({ darkMode, toggleDarkMode, mobileMenuOpen, setMo
             >
               {t('about')}
             </button>
-            
-            <Link 
-              href="/devis" 
-              className="font-semibold px-4 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg shadow-sm border-2 border-gray-300 dark:border-gray-700 hover:border-orange-600 dark:hover:border-orange-400 transition-all"
-            >
-              {t('getQuote')}
-            </Link>
-            
+
             <Link
               href="/formation"
               className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-110 hover:shadow-2xl shadow-lg"
             >
               <GraduationCap className="w-4 h-4" />
               <span className="font-semibold">{t('training')}</span>
+            </Link>
+
+            <Link
+              href="/newsletter"
+              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 transform hover:scale-110 hover:shadow-2xl shadow-lg"
+            >
+              <Mail className="w-4 h-4" />
+              <span className="font-semibold">{t('newsletter')}</span>
+            </Link>
+            
+            <Link 
+              href="/devis" 
+              className="font-semibold px-4 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg shadow-sm border-2 border-gray-300 dark:border-gray-700 hover:border-orange-600 dark:hover:border-orange-400 transition-all"
+            >
+              {t('getQuote')}
             </Link>
 
             <LocaleSwitcher />
@@ -124,14 +132,6 @@ export default function Navbar({ darkMode, toggleDarkMode, mobileMenuOpen, setMo
             >
               {t('about')}
             </button>
-            
-            <Link
-              href="/devis"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-semibold rounded-lg shadow-lg border-2 border-gray-300 dark:border-gray-700 hover:border-orange-600 dark:hover:border-orange-400 transition-all"
-            >
-              {t('getQuote')}
-            </Link>
 
             <Link
               href="/formation"
@@ -140,6 +140,23 @@ export default function Navbar({ darkMode, toggleDarkMode, mobileMenuOpen, setMo
             >
               <GraduationCap className="w-4 h-4" />
               <span className="font-semibold">{t('training')}</span>
+            </Link>
+
+            <Link
+              href="/newsletter"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
+            >
+              <Mail className="w-4 h-4" />
+              <span className="font-semibold">{t('newsletter')}</span>
+            </Link>
+            
+            <Link
+              href="/devis"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-semibold rounded-lg shadow-lg border-2 border-gray-300 dark:border-gray-700 hover:border-orange-600 dark:hover:border-orange-400 transition-all"
+            >
+              {t('getQuote')}
             </Link>
           </div>
         </div>

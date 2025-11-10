@@ -65,7 +65,7 @@ export default function NewsletterSection() {
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-3 bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-lg mb-8 border border-gray-200 dark:border-gray-700">
             <Mail className="w-6 h-6 text-orange-600 dark:text-orange-400" />
-            <span className="font-bold text-lg text-gray-900 dark:text-white">{t('tag')}</span>
+            <span className="font-bold text-lg text-gray-900 dark:text-white">{('tag')}</span>
           </div>
           
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">
